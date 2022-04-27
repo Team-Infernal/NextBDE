@@ -1,0 +1,97 @@
+@import "../../styles/variables";
+
+.navbar {
+	background-color: $dark;
+	padding: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 3rem;
+
+	.logo {
+		margin: 0;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: $light;
+	}
+
+	.linksContainer {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3rem;
+	}
+
+	.link {
+		margin: 0;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: $light;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.connection {
+		color: $accent_main;
+	}
+
+	.menuToggle {
+		display: none;
+		cursor: pointer;
+		margin: 0;
+		font-size: 1.5rem;
+	}
+
+	@media screen and (max-width: $mediaLaptopMax) {
+		padding: 2rem;
+
+		.logoWrapper {
+			display: none;
+		}
+
+		.linksContainer {
+			width: 100%;
+			flex-direction: row;
+			justify-content: space-between;
+			gap: 1.5rem;
+		}
+
+		.minimized {
+			position: relative;
+
+			a:not(.active) {
+				display: none;
+			}
+
+			.menuToggle {
+				position: absolute;
+				top: -2rem;
+				right: -2rem;
+				padding: 2rem;
+			}
+		}
+
+		.expanded {
+			position: relative;
+			flex-direction: column;
+
+			.menuToggle {
+				position: absolute;
+				top: -2rem;
+				right: -2rem;
+				padding: 2rem;
+			}
+
+			a {
+				background-image: none;
+			}
+		}
+
+		.menuToggle {
+			color: $light;
+			display: block;
+			cursor: pointer;
+		}
+	}
+}
