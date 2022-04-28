@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faPenToSquare, faSpinner, faCalendarDays, faLocationDot, faCircleQuestion, faTriangleExclamation, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import { convertDate, convertDateDay, convertDateTime } from "../../lib/processDates";
+import { getDate, getDateTime, getTime, getNow } from "../../lib/processDates";
 import utilStyles from "../../styles/utils.module.scss";
 import styles from "./eventPreview.module.scss";
 
@@ -45,11 +45,11 @@ export default () => {
 		fetchEvents();
 	}, []);
 
-	const handleEventClick = (eventIndex) => setSelectedEventIndex(eventIndex);
-
 	const handleSelectAdd = () => setSelectedEventIndex(-2);
 	const handleSelectRemove = () => setSelectedEventIndex(-3);
 	const handleSelectEdit = () => setSelectedEventIndex(-4);
+
+	const handleEventClick = eventIndex => setSelectedEventIndex(eventIndex);
 
 	const handleEventAdd = async event => {
 		event.preventDefault();
@@ -68,6 +68,7 @@ export default () => {
 				},
 				description: event.target.eventDescription.value,
 				location: event.target.eventLocation.value,
+				created: getNow(),
 			}),
 		});
 
@@ -80,8 +81,8 @@ export default () => {
 			fetchEvents();
 		}, 2000)
 	}
-	
-	
+
+
 
 	return (
 		<section className={styles.eventPreview}>
@@ -97,8 +98,8 @@ export default () => {
 						>
 							<h3>{event.name}</h3>
 							<h3>
-								<span className={styles.day}>{convertDateDay(event.date.start)}</span>
-								<span className={styles.time}>{convertDateTime(event.date.start)}</span>
+								<span className={styles.day}>{getDate(event.date.start)}</span>
+								<span className={styles.time}>{getTime(event.date.start)}</span>
 							</h3>
 						</div>
 					))}
@@ -225,7 +226,7 @@ export default () => {
 										className={`fa-fw ${utilStyles.accentDark}`}
 									/>
 									{" "}
-									{convertDate(events[selectedEventIndex].date.start)}
+									{getDateTime(events[selectedEventIndex].date.start)}
 								</p>
 								<p>
 									<FontAwesomeIcon
