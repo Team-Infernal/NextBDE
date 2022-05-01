@@ -20,7 +20,7 @@ export default () => {
 			styles.link,
 			currentPath === pathname ? utilStyles.fancyUnderline : "",
 			currentPath === pathname ? styles.active : "",
-			currentPath === "/connexion" ? styles.connection : "",
+			currentPath === "/api/auth/signin" ? styles.connection : "",
 		]
 		return classes.join(" ");
 	}

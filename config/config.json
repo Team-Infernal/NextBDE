@@ -43,7 +43,7 @@
 			},
 			{
 				"name": "Connexion",
-				"path": "/connexion"
+				"path": "/api/auth/signin"
 			}
 		]
 	},
