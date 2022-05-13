@@ -18,7 +18,7 @@ export default () => {
 				<Image
 					className={styles.image}
 					priority
-					src="/images/about.jpg"
+					src="/images/about.png"
 					width={380}
 					height={380}
 					layout="intrinsic"

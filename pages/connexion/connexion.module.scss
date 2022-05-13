@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.pageContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.loginContainer {
+	padding: 3rem;
+	box-shadow: $element_shadow;
+	border-radius: $border_radius;
+}
+
+.loginTitle {
+	margin: 0 5rem 3rem;
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+.loginOptions {
+	display: flex;
+	flex-direction: column;
+}
+
+.providers {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.icons {
+	box-shadow: $element_shadow;
+	padding: 15px 10px;
+	font-size: 2rem;
+	border-radius: $border_radius;
+	cursor: pointer;
+	transition: color 150ms ease;
+
+	&:hover {
+		color: $accent_main_hover;
+	}
+}

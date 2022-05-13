@@ -1,6 +1,6 @@
 {
 	"site": {
-		"name": "Incroyable BDE",
+		"name": "NextBDE",
 		"email": {
 			"name": "contact@incroyablebde.fr",
 			"link": "mailto:contact@incroyablebde.fr"
@@ -42,8 +42,28 @@
 				"path": "/boutique"
 			},
 			{
-				"name": "Connexion",
-				"path": "/api/auth/signin"
+				"name": "Se connecter",
+				"path": "/connexion"
+			},
+			{
+				"name": "Se déconnecter",
+				"path": "/api/auth/signout"
+			}
+		]
+	},
+	"auth": {
+		"providers": [
+			{
+				"name": "Google",
+				"icon": "faGoogle"
+			},
+			{
+				"name": "Discord",
+				"icon": "faDiscord"
+			},
+			{
+				"name": "Twitter (Legacy)",
+				"icon": "faTwitter"
 			}
 		]
 	},
