@@ -5,6 +5,7 @@ import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faInstagram, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import config from "../../config/config.json";
+import quotesJson from "../../config/quotes.json";
 import utilStyles from "../../styles/utils.module.scss";
 import styles from "./footer.module.scss";
 
@@ -12,7 +13,7 @@ export default () => {
 	const [quotes, setQuotes] = useState(null);
 
 	useEffect(() => {
-		setQuotes(config.quotes);
+		setQuotes(quotesJson);
 	}, [])
 
 	const getRandomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
@@ -75,7 +76,7 @@ export default () => {
 					<Link href="https://discord.com">
 						<a target="_blank" rel="noreferrer">
 							<FontAwesomeIcon icon={faDiscord} className={`fa-fw ${styles.logo}`} />
-						</a> 
+						</a>
 					</Link>
 				</div>
 			</div>

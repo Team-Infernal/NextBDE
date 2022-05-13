@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,11 +10,12 @@ import utilStyles from "../../styles/utils.module.scss";
 import styles from "./navbar.module.scss";
 
 export default () => {
+	const { data: session, status } = useSession();
 	const { links } = config.navbar;
 	const { pathname } = useRouter();
 	const [expanded, setExpanded] = useState(false);
-	
-	const getLinkClasses = (currentPath) => {
+
+	const getLinkClasses = currentPath => {
 		const classes = [
 			utilStyles.fancyLink,
 			utilStyles.inverted,
@@ -23,6 +25,28 @@ export default () => {
 			currentPath === "/connexion" ? styles.connection : "",
 		]
 		return classes.join(" ");
+	}
+
+	const getAuthLink = () => {
+		if (status === "authenticated") {
+			return (
+				<Link href={config.navbar.auth.signout}>
+					<a className={`${styles.link}`}>
+						Mon compte
+					</a>
+				</Link>
+			)
+		} else if (status === "loading") {
+			return;
+		} else {
+			return (
+				<Link href={config.navbar.auth.signin}>
+					<a className={`${styles.link}`}>
+						Se connecter
+					</a>
+				</Link>
+			)
+		}
 	}
 
 	return (
@@ -42,6 +66,7 @@ export default () => {
 						>{link.name}</a>
 					</Link>
 				))}
+				{getAuthLink()}
 				<p className={styles.menuToggle} onClick={() => setExpanded(!expanded)}>
 					<FontAwesomeIcon icon={faBars} className="fa-fw" />
 				</p>

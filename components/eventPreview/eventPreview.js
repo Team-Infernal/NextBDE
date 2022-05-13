@@ -184,7 +184,7 @@ export default () => {
 						<>
 							<h2 className={styles.detailsTitle}>Ajouter un événement</h2>
 							<div className={styles.detailsAdd}>
-								<form onSubmit={handleEventAdd}>
+								<form onSubmit={handleEventAdd} className={styles.form}>
 
 									<label htmlFor="eventName">Nom</label>
 									<input id="eventName" className={utilStyles.userInput} type="text" placeholder="Soirée, bowling..." name="eventName" required />
@@ -196,7 +196,7 @@ export default () => {
 											<input id="eventDateTimeStart" className={utilStyles.userInput} type="datetime-local" name="eventDateTimeStart" required />
 										</div>
 										<div>
-											<label htmlFor="eventDateTimeEnd">Début</label>
+											<label htmlFor="eventDateTimeEnd">Fin</label>
 											<input id="eventDateTimeEnd" className={utilStyles.userInput} type="datetime-local" name="eventDateTimeEnd" required />
 										</div>
 									</div>
